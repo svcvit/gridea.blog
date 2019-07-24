@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://svcvit.github.io</id>
+    <id>http://blog.ws1017.com</id>
     <title>Gridea</title>
-    <updated>2019-07-24T08:00:45.950Z</updated>
+    <updated>2019-07-24T08:01:26.264Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="http://svcvit.github.io"/>
-    <link rel="self" href="http://svcvit.github.io/atom.xml"/>
+    <link rel="alternate" href="http://blog.ws1017.com"/>
+    <link rel="self" href="http://blog.ws1017.com/atom.xml"/>
     <subtitle>温故而知新</subtitle>
-    <logo>http://svcvit.github.io/images/avatar.png</logo>
-    <icon>http://svcvit.github.io/favicon.ico</icon>
+    <logo>http://blog.ws1017.com/images/avatar.png</logo>
+    <icon>http://blog.ws1017.com/favicon.ico</icon>
     <rights>All rights reserved 2019, Gridea</rights>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>http://svcvit.github.io/post/hello-gridea</id>
-        <link href="http://svcvit.github.io/post/hello-gridea">
+        <id>http://blog.ws1017.com/post/hello-gridea</id>
+        <link href="http://blog.ws1017.com/post/hello-gridea">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
