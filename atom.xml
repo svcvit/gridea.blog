@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://svcvit.github.io</id>
     <title>Gridea</title>
-    <updated>2019-07-26T04:54:53.533Z</updated>
+    <updated>2019-07-26T05:14:50.583Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://svcvit.github.io"/>
     <link rel="self" href="https://svcvit.github.io/atom.xml"/>
@@ -10,6 +10,30 @@
     <logo>https://svcvit.github.io/images/avatar.png</logo>
     <icon>https://svcvit.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[联想牌软路由]]></title>
+        <id>https://svcvit.github.io/post/lenovo_router </id>
+        <link href="https://svcvit.github.io/post/lenovo_router ">
+        </link>
+        <updated>2019-07-26T05:03:21.000Z</updated>
+        <content type="html"><![CDATA[<p>以前买的小马的v5的软路由，ES的cpu，风扇真的是吵，而且做工、电源、都是浓浓的山寨气息。无奈也没找到合适的小主机，也就一直用着了。上个月看到坛友的<a href="https://www.chiphell.com/thread-1988370-1-1.html">m720开箱贴</a>。</p>
+<p>于是也在联想美国官网定了一台，加配了4口的网卡。因为担心砍单，所以就直接寄到美国朋友家里，今天刚送到国内，开箱分享一下。</p>
+<p>我购买的是最乞丐的版本，配置如下：<br>
+<img src="https://svcvit.github.io/post-images/1564117679467.png" alt=""></p>
+<p>用了联想的8通道，含税价格这么多。总体来说比淘宝的软路由价格贵一点，但是真心比联想国行便宜。<br>
+<img src="https://svcvit.github.io/post-images/1564117809052.jpg" alt=""></p>
+<p>拍点照片：<br>
+<img src="https://svcvit.github.io/post-images/1564117648781.JPG" alt=""><br>
+<img src="https://svcvit.github.io/post-images/1564117648783.JPG" alt=""><br>
+<img src="https://svcvit.github.io/post-images/1564117648784.JPG" alt=""><br>
+<img src="https://svcvit.github.io/post-images/1564117648785.JPG" alt=""><br>
+<img src="https://svcvit.github.io/post-images/1564117648786.JPG" alt=""><br>
+<img src="https://svcvit.github.io/post-images/1564117648787.JPG" alt=""><br>
+<img src="https://svcvit.github.io/post-images/1564117648788.JPG" alt=""><br>
+<img src="https://svcvit.github.io/post-images/1564117648789.JPG" alt=""><br>
+<img src="https://svcvit.github.io/post-images/1564117648790.JPG" alt=""></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[领一张英国4G电话卡，大陆合法上网]]></title>
         <id>https://svcvit.github.io/post/CMLINK_UK_4G_SIM</id>
