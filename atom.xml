@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://svcvit.github.io</id>
     <title>Gridea</title>
-    <updated>2019-07-25T01:57:13.988Z</updated>
+    <updated>2019-07-26T04:35:34.067Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://svcvit.github.io"/>
     <link rel="self" href="https://svcvit.github.io/atom.xml"/>
@@ -10,6 +10,20 @@
     <logo>https://svcvit.github.io/images/avatar.png</logo>
     <icon>https://svcvit.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[领一张英国4G电话卡，大陆合法上网]]></title>
+        <id>https://svcvit.github.io/post/ling-yi-zhang-ying-guo-4g-dian-hua-qia-da-lu-he-fa-shang-wang</id>
+        <link href="https://svcvit.github.io/post/ling-yi-zhang-ying-guo-4g-dian-hua-qia-da-lu-he-fa-shang-wang">
+        </link>
+        <updated>2019-07-26T04:23:32.000Z</updated>
+        <content type="html"><![CDATA[<p>总所周知，在大陆境内非法使用vpn、ssr等方式浏览境外网站，被定义为非法，所以各种翻墙方式都不一定稳定，特别是国家开大会，基本所有线路都是挂的。</p>
+<p>目前看网上推荐，中国移动在英国提供的CMLINK，支持英国、欧盟、中国大陆、香港地区共享流量套餐使用，实测在大陆也可以正常访问国外Youtube等网站，应该是目前最合法的翻墙方式了。</p>
+<p>我去CMLINK的官网申请了一张，快递从广东发出，大概两天左右收到。</p>
+<p><img src="https://svcvit.github.io/post-images/1564115668300.jpg" alt=""></p>
+<p>卡片这个样子：</p>
+<p><img src="https://svcvit.github.io/post-images/1564115729438.JPG" alt=""></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>https://svcvit.github.io/post/hello-gridea</id>
