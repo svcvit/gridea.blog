@@ -1,15 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://svcvit.github.io</id>
-    <title>Gridea</title>
-    <updated>2019-08-07T07:16:25.732Z</updated>
+    <title>小众需求</title>
+    <updated>2019-08-07T07:20:24.617Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://svcvit.github.io"/>
     <link rel="self" href="https://svcvit.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
+    <subtitle>一些很小众的需求，往往需要自己找答案。</subtitle>
     <logo>https://svcvit.github.io/images/avatar.png</logo>
     <icon>https://svcvit.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2019, Gridea</rights>
+    <rights>All rights reserved 2019, 小众需求</rights>
+    <entry>
+        <title type="html"><![CDATA[Pandas的一些使用备忘]]></title>
+        <id>https://svcvit.github.io/post/pandas_cheatsheet</id>
+        <link href="https://svcvit.github.io/post/pandas_cheatsheet">
+        </link>
+        <updated>2019-08-07T07:04:43.000Z</updated>
+        <content type="html"><![CDATA[<p>一些常用的操作，备注一下方便查找。</p>
+<h2 id="读取表格数据">读取表格数据</h2>
+<p><code>pd.read_excel(&quot;data.xlsx&quot;,&quot;sheet1&quot;)</code></p>
+<h2 id="删除重复数据">删除重复数据</h2>
+<p><code>drop_duplicates(['col1'])</code><br>
+数组中支持按多列去重</p>
+<h2 id="透视表">透视表</h2>
+<p><code>pd.pivot_table(df[df['年份']==2019],index=['col1','col2'],values = ['clo3'],aggfunc='count',fill_value=0)</code></p>
+<h2 id="行列转换">行列转换</h2>
+<p><code>out.unstack(level=1,fill_value=0)</code></p>
+<h2 id="left_join">left_join</h2>
+<p><code>pd.merge(df1, df2, how='left', left_on='key_name', right_on='key_name')</code></p>
+<h2 id="查询列名">查询列名</h2>
+<p><code>df.columns</code></p>
+<h2 id="修改列名">修改列名</h2>
+<p><code>df.rename(columns={&quot;old_name&quot;:&quot;new_name&quot;, &quot;old_name2&quot;:&quot;new_name2&quot;}, inplace = True)</code></p>
+<h2 id="写入表格">写入表格</h2>
+<p><code>with pd.ExcelWriter('output.xlsx') as writer: df1.to_excel(writer, sheet_name=&quot;name1&quot;,index=False) df2.to_excel(writer, sheet_name=&quot;name2&quot;,index=False) df3.to_excel(writer, sheet_name=&quot;name3&quot;,index=False)</code></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[联想牌软路由]]></title>
         <id>https://svcvit.github.io/post/lenovo_router</id>
