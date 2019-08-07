@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://svcvit.github.io</id>
     <title>小众需求</title>
-    <updated>2019-08-07T07:32:29.375Z</updated>
+    <updated>2019-08-07T08:30:01.914Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://svcvit.github.io"/>
     <link rel="self" href="https://svcvit.github.io/atom.xml"/>
@@ -17,33 +17,59 @@
         </link>
         <updated>2019-08-07T07:04:43.000Z</updated>
         <content type="html"><![CDATA[<p>一些常用的操作，备注一下方便查找。</p>
-<h2 id="读取表格数">读取表格数</h2>
+<h3 id="读取表格数">读取表格数</h3>
 <pre><code class="language-python">pd.read_excel(&quot;data.xlsx&quot;,&quot;sheet1&quot;)
 </code></pre>
-<h2 id="删除重复数据">删除重复数据</h2>
+<h3 id="删除重复数据">删除重复数据</h3>
 <pre><code class="language-python">drop_duplicates(['col1'])
 </code></pre>
 <p>数组中支持按多列去重</p>
-<h2 id="透视表">透视表</h2>
+<h3 id="选择数据">选择数据</h3>
+<pre><code class="language-python"># 所有的行，某一列
+new.loc[:,&quot;col_name&quot;]
+</code></pre>
+<h3 id="透视表">透视表</h3>
 <pre><code class="language-python">pd.pivot_table(df[df['年份']==2019],index=['col1','col2'],values = ['clo3'],aggfunc='count',fill_value=0)
 </code></pre>
-<h2 id="行列转换">行列转换</h2>
+<h3 id="行列转换">行列转换</h3>
 <pre><code class="language-python">out.unstack(level=1,fill_value=0)
 </code></pre>
-<h2 id="left_join">left_join</h2>
+<h3 id="左右合并">左右合并</h3>
 <pre><code class="language-python">pd.merge(df1, df2, how='left', left_on='key_name', right_on='key_name')
 </code></pre>
-<h2 id="查询列名">查询列名</h2>
+<h3 id="查询列名">查询列名</h3>
 <pre><code class="language-python">df.columns
 </code></pre>
-<h2 id="修改列名">修改列名</h2>
+<h3 id="修改列名">修改列名</h3>
 <pre><code class="language-python">df.rename(columns={&quot;old_name&quot;:&quot;new_name&quot;, &quot;old_name2&quot;:&quot;new_name2&quot;}, inplace = True)
 </code></pre>
-<h2 id="写入表格">写入表格</h2>
+<h3 id="写入表格">写入表格</h3>
 <pre><code class="language-python">with pd.ExcelWriter('output.xlsx') as writer:  
     df1.to_excel(writer, sheet_name=&quot;name1&quot;,index=False)
     df2.to_excel(writer, sheet_name=&quot;name2&quot;,index=False)
     df3.to_excel(writer, sheet_name=&quot;name3&quot;,index=False)
+</code></pre>
+<h3 id="上下合并">上下合并</h3>
+<pre><code class="language-python">pd.concat([df1,df2],sort=False)
+</code></pre>
+<h3 id="读取数据库">读取数据库</h3>
+<pre><code class="language-python">engine = sqlalchemy.create_engine(&quot;postgresql://username:pwd@0.0.0.0/database&quot;)
+
+with engine.connect() as conn:
+		#读取数据
+    pd.read_sql_table(&quot;table_name&quot;,conn,parse_dates=[&quot;日期&quot;])
+		#写入数据
+		df.to_sql(&quot;table_name&quot;, con=conn, if_exists='append')
+		
+		truncate_query = sqlalchemy.text(&quot;&quot;&quot;
+        truncate  table &quot;ALL&quot;;
+        &quot;&quot;&quot;)
+		conn.execution_options(autocommit=True).execute(truncate_query)
+
+engine.dispose()
+</code></pre>
+<h3 id="重置索引">重置索引</h3>
+<pre><code class="language-python">df.reset_index(drop=True)
 </code></pre>
 ]]></content>
     </entry>
