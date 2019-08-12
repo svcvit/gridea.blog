@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://svcvit.github.io</id>
     <title>小众需求</title>
-    <updated>2019-08-07T08:30:01.914Z</updated>
+    <updated>2019-08-12T02:37:57.772Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://svcvit.github.io"/>
     <link rel="self" href="https://svcvit.github.io/atom.xml"/>
@@ -20,13 +20,17 @@
 <h3 id="读取表格数">读取表格数</h3>
 <pre><code class="language-python">pd.read_excel(&quot;data.xlsx&quot;,&quot;sheet1&quot;)
 </code></pre>
+<h3 id="读取数据参数">读取数据参数</h3>
+<pre><code class="language-python">col_names = [a,b,c,d]
+pd.read_csv(&quot;file_name.csv&quot;,names=col_names,header=0)
+</code></pre>
 <h3 id="删除重复数据">删除重复数据</h3>
-<pre><code class="language-python">drop_duplicates(['col1'])
+<pre><code class="language-python">df.drop_duplicates(['col1'])
 </code></pre>
 <p>数组中支持按多列去重</p>
 <h3 id="选择数据">选择数据</h3>
 <pre><code class="language-python"># 所有的行，某一列
-new.loc[:,&quot;col_name&quot;]
+df.loc[:,&quot;col_name&quot;]
 </code></pre>
 <h3 id="透视表">透视表</h3>
 <pre><code class="language-python">pd.pivot_table(df[df['年份']==2019],index=['col1','col2'],values = ['clo3'],aggfunc='count',fill_value=0)
@@ -70,6 +74,28 @@ engine.dispose()
 </code></pre>
 <h3 id="重置索引">重置索引</h3>
 <pre><code class="language-python">df.reset_index(drop=True)
+</code></pre>
+<h3 id="基础统计">基础统计</h3>
+<pre><code class="language-python">df.describe(include=[&quot;object&quot;])
+</code></pre>
+<h3 id="文本的操作">文本的操作</h3>
+<pre><code class="language-python">#替换
+df['col'].str.replace(&quot;a&quot;,&quot;b&quot;)
+#查找
+df['col'].str.contains(&quot;&quot;)
+</code></pre>
+<h3 id="删除列">删除列</h3>
+<pre><code class="language-python">df.drop('col_name',axis = 1,inplace=True)
+</code></pre>
+<h3 id="删除行">删除行</h3>
+<pre><code class="language-python">df.drop([row1,row1],axis = 0,inplace=True)
+</code></pre>
+<h3 id="排序">排序</h3>
+<pre><code class="language-python">df.sort_values([col1,col2])
+</code></pre>
+<h3 id="筛选数据">筛选数据</h3>
+<pre><code class="language-python">#注意：需要小括号和&amp;符号
+df[(df['0']&gt;0.3) &amp; (df['1']&gt;0.7)]
 </code></pre>
 ]]></content>
     </entry>
