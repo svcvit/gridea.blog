@@ -1,22 +1,99 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://svcvit.github.io</id>
-    <title>小众需求</title>
-    <updated>2019-08-18T00:59:42.201Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://svcvit.github.io"/>
-    <link rel="self" href="https://svcvit.github.io/atom.xml"/>
-    <subtitle>一些很小众的需求，往往需要自己找答案。</subtitle>
-    <logo>https://svcvit.github.io/images/avatar.png</logo>
-    <icon>https://svcvit.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2019, 小众需求</rights>
-    <entry>
-        <title type="html"><![CDATA[PowerBI 一些笔记]]></title>
-        <id>https://svcvit.github.io/post/powerbi</id>
-        <link href="https://svcvit.github.io/post/powerbi">
-        </link>
-        <updated>2019-08-18T00:23:17.000Z</updated>
-        <content type="html"><![CDATA[<p>PowerBI很多时候看起来很好用，如果能学的很深入，应该也很好用，但是PowerBI真的挺难理解的，相对于很多编程语言来讲，最近用了一下，记录一些DAX的写法。</p>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PowerBI 一些笔记 | 小众需求</title>
+<meta name="description" content="一些很小众的需求，往往需要自己找答案。" />
+<link rel="shortcut icon" href="https://svcvit.github.io/favicon.ico?v=1566089975231">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://svcvit.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://svcvit.github.io">
+  <img class="avatar" src="https://svcvit.github.io/images/avatar.png?v=1566089975231" alt="">
+  </a>
+  <h1 class="site-title">
+    小众需求
+  </h1>
+  <p class="site-description">
+    一些很小众的需求，往往需要自己找答案。
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              PowerBI 一些笔记
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-08-18
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://svcvit.github.io/tag/oj8o7s5dZ" class="post-tag">
+                  # PowerBI
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://svcvit.github.io/post-images/powerbi.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>PowerBI很多时候看起来很好用，如果能学的很深入，应该也很好用，但是PowerBI真的挺难理解的，相对于很多编程语言来讲，最近用了一下，记录一些DAX的写法。</p>
 <h3 id="按序列做排名">按序列做排名</h3>
 <p>RANKX 默认做排名的时候，如果遇到相同的数值，要么重复排名后跳过，要么重复排名之后顺序，但是没有办法将重复排名变成序列，查了一下写法，可以添加一个行号参与运算，这样计算时就没有重复数值了：</p>
 <p><code>今日排名 = RANKX(ALL('public ALL_Relation'[销售]),[统计值]+[sum_index]/100000,,DESC)</code></p>
@@ -153,169 +230,126 @@
     Value.ReplaceType( CreateCalendar , CalendarType )
 
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Pandas的一些使用备忘]]></title>
-        <id>https://svcvit.github.io/post/pandas_cheatsheet</id>
-        <link href="https://svcvit.github.io/post/pandas_cheatsheet">
-        </link>
-        <updated>2019-08-07T07:04:43.000Z</updated>
-        <content type="html"><![CDATA[<p>一些常用的操作，备注一下方便查找。</p>
-<h3 id="读取表格数">读取表格数</h3>
-<pre><code class="language-python">pd.read_excel(&quot;data.xlsx&quot;,&quot;sheet1&quot;)
-</code></pre>
-<h3 id="读取数据参数">读取数据参数</h3>
-<pre><code class="language-python">col_names = [a,b,c,d]
-pd.read_csv(&quot;file_name.csv&quot;,names=col_names,header=0)
-</code></pre>
-<h3 id="删除重复数据">删除重复数据</h3>
-<pre><code class="language-python">df.drop_duplicates(['col1'])
-</code></pre>
-<p>数组中支持按多列去重</p>
-<h3 id="选择数据">选择数据</h3>
-<pre><code class="language-python"># 所有的行，某一列
-df.loc[:,&quot;col_name&quot;]
-</code></pre>
-<h3 id="透视表">透视表</h3>
-<pre><code class="language-python">pd.pivot_table(df[df['年份']==2019],index=['col1','col2'],values = ['clo3'],aggfunc='count',fill_value=0)
-</code></pre>
-<h3 id="行列转换">行列转换</h3>
-<pre><code class="language-python">out.unstack(level=1,fill_value=0)
-</code></pre>
-<h3 id="左右合并">左右合并</h3>
-<pre><code class="language-python">pd.merge(df1, df2, how='left', left_on='key_name', right_on='key_name')
-</code></pre>
-<h3 id="查询列名">查询列名</h3>
-<pre><code class="language-python">df.columns
-</code></pre>
-<h3 id="修改列名">修改列名</h3>
-<pre><code class="language-python">df.rename(columns={&quot;old_name&quot;:&quot;new_name&quot;, &quot;old_name2&quot;:&quot;new_name2&quot;}, inplace = True)
-</code></pre>
-<h3 id="写入表格">写入表格</h3>
-<pre><code class="language-python">with pd.ExcelWriter('output.xlsx') as writer:  
-    df1.to_excel(writer, sheet_name=&quot;name1&quot;,index=False)
-    df2.to_excel(writer, sheet_name=&quot;name2&quot;,index=False)
-    df3.to_excel(writer, sheet_name=&quot;name3&quot;,index=False)
-</code></pre>
-<h3 id="上下合并">上下合并</h3>
-<pre><code class="language-python">pd.concat([df1,df2],sort=False)
-</code></pre>
-<h3 id="读取数据库">读取数据库</h3>
-<pre><code class="language-python">engine = sqlalchemy.create_engine(&quot;postgresql://username:pwd@0.0.0.0/database&quot;)
 
-with engine.connect() as conn:
-		#读取数据
-    pd.read_sql_table(&quot;table_name&quot;,conn,parse_dates=[&quot;日期&quot;])
-		#写入数据
-		df.to_sql(&quot;table_name&quot;, con=conn, if_exists='append')
-		
-		truncate_query = sqlalchemy.text(&quot;&quot;&quot;
-        truncate  table &quot;ALL&quot;;
-        &quot;&quot;&quot;)
-		conn.execution_options(autocommit=True).execute(truncate_query)
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E6%8C%89%E5%BA%8F%E5%88%97%E5%81%9A%E6%8E%92%E5%90%8D">按序列做排名</a></li>
+<li><a href="#%E7%BB%9F%E8%AE%A1ytd">统计YTD</a></li>
+<li><a href="#%E7%BB%9F%E8%AE%A1mtd">统计MTD</a></li>
+<li><a href="#%E7%BB%9F%E8%AE%A1wtd">统计WTD</a></li>
+<li><a href="#%E4%BB%8A%E6%97%A5%E6%95%B0%E6%8D%AE">今日数据</a></li>
+<li><a href="#%E6%9C%AC%E6%9C%88%E6%95%B0%E6%8D%AE">本月数据</a></li>
+<li><a href="#%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7">当前用户</a></li>
+<li><a href="#%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7%E5%90%8D">当前用户名</a></li>
+<li><a href="#%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7%E6%95%B0">当前用户数</a></li>
+<li><a href="#%E5%88%B7%E6%96%B0%E6%97%B6%E9%97%B4">刷新时间</a></li>
+<li><a href="#%E5%88%A4%E6%96%AD%E4%B8%A4%E5%88%97%E7%9A%84%E6%95%B0%E5%80%BC%E7%94%9F%E6%88%90%E4%B8%80%E5%88%97">判断两列的数值生成一列</a></li>
+<li><a href="#%E6%98%AF%E5%90%A6%E6%98%AF%E6%98%A8%E6%97%A5%E6%95%B0%E6%8D%AE">是否是昨日数据</a></li>
+<li><a href="#%E6%98%AF%E5%90%A6%E5%BD%93%E6%9C%88%E6%95%B0%E6%8D%AE">是否当月数据</a></li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E6%97%A5%E6%9C%9F%E8%A1%A8">添加日期表</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
-engine.dispose()
-</code></pre>
-<h3 id="重置索引">重置索引</h3>
-<pre><code class="language-python">df.reset_index(drop=True)
-</code></pre>
-<h3 id="基础统计">基础统计</h3>
-<pre><code class="language-python">df.describe(include=[&quot;object&quot;])
-</code></pre>
-<h3 id="文本的操作">文本的操作</h3>
-<pre><code class="language-python">#替换
-df['col'].str.replace(&quot;a&quot;,&quot;b&quot;)
-#查找
-df['col'].str.contains(&quot;&quot;)
-</code></pre>
-<h3 id="删除列">删除列</h3>
-<pre><code class="language-python">df.drop('col_name',axis = 1,inplace=True)
-</code></pre>
-<h3 id="删除行">删除行</h3>
-<pre><code class="language-python">df.drop([row1,row1],axis = 0,inplace=True)
-</code></pre>
-<h3 id="排序">排序</h3>
-<pre><code class="language-python">df.sort_values([col1,col2])
-</code></pre>
-<h3 id="筛选数据">筛选数据</h3>
-<pre><code class="language-python">#注意：需要小括号和&amp;符号
-df[(df['0']&gt;0.3) &amp; (df['1']&gt;0.7)]
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[联想牌软路由]]></title>
-        <id>https://svcvit.github.io/post/lenovo_router</id>
-        <link href="https://svcvit.github.io/post/lenovo_router">
-        </link>
-        <updated>2019-07-26T05:03:21.000Z</updated>
-        <content type="html"><![CDATA[<p>以前买的小马的v5的软路由，ES的cpu，风扇真的是吵，而且做工、电源、都是浓浓的山寨气息。无奈也没找到合适的小主机，也就一直用着了。上个月看到坛友的<a href="https://www.chiphell.com/thread-1988370-1-1.html">m720开箱贴</a>。</p>
-<p>于是也在联想美国官网定了一台，加配了4口的网卡。因为担心砍单，所以就直接寄到美国朋友家里，今天刚送到国内，开箱分享一下。</p>
-<p>我购买的是最乞丐的版本，配置如下：<br>
-<img src="https://svcvit.github.io/post-images/1564117679467.png" alt=""></p>
-<p>用了联想的8通道，含税价格这么多。总体来说比淘宝的软路由价格贵一点，但是真心比联想国行便宜。<br>
-<img src="https://svcvit.github.io/post-images/1564117809052.jpg" alt=""></p>
-<p>拍点照片：<br>
-<img src="https://svcvit.github.io/post-images/1564117648781.JPG" alt=""><br>
-<img src="https://svcvit.github.io/post-images/1564117648783.JPG" alt=""><br>
-<img src="https://svcvit.github.io/post-images/1564117648784.JPG" alt=""><br>
-<img src="https://svcvit.github.io/post-images/1564117648785.JPG" alt=""><br>
-<img src="https://svcvit.github.io/post-images/1564117648786.JPG" alt=""><br>
-<img src="https://svcvit.github.io/post-images/1564117648787.JPG" alt=""><br>
-<img src="https://svcvit.github.io/post-images/1564117648788.JPG" alt=""><br>
-<img src="https://svcvit.github.io/post-images/1564117648789.JPG" alt=""><br>
-<img src="https://svcvit.github.io/post-images/1564117648790.JPG" alt=""></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[领一张英国4G电话卡，大陆合法上网]]></title>
-        <id>https://svcvit.github.io/post/CMLINK_UK_4G_SIM</id>
-        <link href="https://svcvit.github.io/post/CMLINK_UK_4G_SIM">
-        </link>
-        <updated>2019-07-26T04:23:32.000Z</updated>
-        <content type="html"><![CDATA[<p>众所周知，在大陆境内非法使用vpn、ssr等方式浏览境外网站，被定义为非法，所以各种翻墙方式都不一定稳定，特别是国家开大会，基本所有线路都是挂的。</p>
-<p>前天看网上推荐，中国移动在英国提供的CMLINK电话卡，号码是英国本地号码，支持英国、欧盟、中国大陆、香港地区共享流量套餐使用，实测在大陆也可以正常访问国外Youtube等网站，应该是目前最合法的翻墙方式了。而且手机共享出来的热点，也能正常翻墙。</p>
-<p>我去CMLINK的官网申请了一张，快递从广东发出，大概两天左右收到。</p>
-<p><img src="https://svcvit.github.io/post-images/1564115668300.jpg" alt=""></p>
-<p>卡片这个样子：</p>
-<p><img src="https://svcvit.github.io/post-images/1564115824141.JPG" alt=""></p>
-<p><img src="https://svcvit.github.io/post-images/1564115830020.JPG" alt=""></p>
-<p>充值会自动激活，如果不充值，打卡片包装后面印刷的服务热线，申请开通会员服务，也可以激活，热线有中文服务。激活即送500m的流量，免费使用。目前有几个套餐可以选择：</p>
-<p><img src="https://svcvit.github.io/post-images/1564115886293.jpg" alt=""></p>
-<p>我选了一个最便宜的5.99英镑的套餐，用一段时间，看看稳定性如何。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://svcvit.github.io/post/hello-gridea</id>
-        <link href="https://svcvit.github.io/post/hello-gridea">
-        </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="http://hvenotes.fehey.com/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>𝖶𝗂𝗇𝖽𝗈𝗐𝗌</strong> 或 <strong>𝖬𝖺𝖼𝖮𝖲</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
-]]></content>
-    </entry>
-</feed>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://svcvit.github.io/post/pandas_cheatsheet">
+              <h3 class="post-title">
+                Pandas的一些使用备忘
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'cc922052c37806ae1048',
+    clientSecret: '279d4ad4cbcb7c8f9a96b86ab70bc128e4cb5b7f',
+    repo: 'svcvit.github.io',
+    owner: 'svcvit',
+    admin: ['svcvit'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://svcvit.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      console.log('section.offsetHeight', section.offsetHeight);
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
