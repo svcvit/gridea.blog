@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://svcvit.github.io</id>
     <title>小众需求</title>
-    <updated>2019-08-18T00:59:42.201Z</updated>
+    <updated>2019-08-20T07:48:46.565Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://svcvit.github.io"/>
     <link rel="self" href="https://svcvit.github.io/atom.xml"/>
@@ -35,19 +35,27 @@
 <h3 id="当前用户">当前用户</h3>
 <p><code>当前 用户 = USERNAME()</code></p>
 <h3 id="当前用户名">当前用户名</h3>
-<p><code>当前用户名 = CALCULATE(VALUES('public Permissions'[Name]),FILTER('public Permissions','public Permissions'[Email] in {USERNAME()}))</code></p>
+<p><code>当前用户名 = CALCULATE(VALUES('UserInfo'[Name]),FILTER('UserInfo','UserInfo'[Email] in {USERNAME()}))</code></p>
 <h3 id="当前用户数">当前用户数</h3>
 <p>先将数据表关联到权限关系表：<br>
 <code>当前用户数 = CALCULATE([统计数值],FILTER('Permissions','Permissions'[Email]=USERNAME()))</code></p>
 <h3 id="刷新时间">刷新时间</h3>
 <p>添加辅助列<br>
 <code>RefreshDate = NOW()</code></p>
+<h3 id="过滤外部筛选器">过滤外部筛选器</h3>
+<p><code>user_count = CALCULATE(COUNTA('data'[user_ID]),'data'[col2]=BLANK(),int(YEAR('data'[CreatedAt]))&amp;int(MONTH('data'[CreatedAt])) = int(YEAR(today()))&amp;int(MONTH(TODAY())),ALLEXCEPT(data,Relation[总监],Relation[大区经理],Relation[区域经理],Relation[销售]))</code><br>
+过滤掉全局的筛选器</p>
 <h3 id="判断两列的数值生成一列">判断两列的数值生成一列</h3>
 <p><code>New = IF(and('Permissions'[A]&gt;0,'Permissions'[B]&gt;0),&quot;ALL&quot;,(IF('Permissions'[A]&gt;0,&quot;A&quot;,&quot;B&quot;)))</code></p>
 <h3 id="是否是昨日数据">是否是昨日数据</h3>
 <p><code>is_today = if('ALL'[日期] = today(),&quot;Today&quot;,(IF(DATEADD('ALL'[日期],1,DAY) = today(),&quot;Yesterday&quot;,&quot;OLD&quot;)))</code></p>
 <h3 id="是否当月数据">是否当月数据</h3>
 <p><code>is_当月 = if(and(INT('ALL'[日期_年])=YEAR(today()),int('ALL'[日期_月])=MONTH(TODAY())),&quot;YES&quot;,&quot;NO&quot;)</code></p>
+<h3 id="用户权限">用户权限</h3>
+<p>用户权限应该使用「管理角色」方式进行处理，如果直接在DAX里控制权限，当整个数据统计过多之后，工作量将倍增。而且DAX无法应用与筛选器，这样就导致低层级用户可以看到高层级用户的筛选项。所以在创建数据结构关系的时候，可以将不同身份变成不同的关联表，方便日后筛选数据</p>
+<p><img src="https://svcvit.github.io/post-images/1566286552331.jpg" alt=""></p>
+<p>1、声明一个user_name = &quot;test@abc.com&quot; 用于测试角色<br>
+2、发布之后，将user_name = USERNAME()</p>
 <h3 id="添加日期表">添加日期表</h3>
 <pre><code>let
 
