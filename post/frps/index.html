@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>FRPS 的自动启动 | 小众需求</title>
 <meta name="description" content="一些很小众的需求，往往需要自己找答案。" />
-<link rel="shortcut icon" href="https://svcvit.github.io/favicon.ico?v=1566959764277">
+<link rel="shortcut icon" href="https://svcvit.github.io/favicon.ico?v=1566960036069">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://svcvit.github.io/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://svcvit.github.io">
-  <img class="avatar" src="https://svcvit.github.io/images/avatar.png?v=1566959764277" alt="">
+  <img class="avatar" src="https://svcvit.github.io/images/avatar.png?v=1566960036069" alt="">
   </a>
   <h1 class="site-title">
     小众需求
@@ -85,11 +85,12 @@
               
             </div>
             
-              <img class="post-feature-image" src="https://svcvit.github.io/post-images/FPRS.png" alt="">
+              <img class="post-feature-image" src="https://svcvit.github.io/post-images/frps.png" alt="">
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>如果是Linux服务器，譬如我用的centos 7.5，配置系统启动如下：</p>
+                <h2 id="linux-篇">Linux 篇</h2>
+<p>如果是Linux服务器，譬如我用的centos 7.5，配置系统启动如下：</p>
 <h3 id="创建service文件">创建service文件</h3>
 <pre><code>vi /etc/systemd/system/frps.service
 </code></pre>
@@ -105,18 +106,39 @@ WantedBy=multi-user.target
 <h3 id="启动">启动</h3>
 <p>启动：<code>systemctl start frps</code><br>
 自动启动：<code>systemctl enable frps</code></p>
-<p>如果是Windows服务器。</p>
+<h2 id="windows-篇">Windows 篇</h2>
+<p>如果是Windows服务器。可以使用<a href="https://github.com/kohsuke/winsw">winsw</a>。将<code>winsw.exe</code>文件和<code>frpc.exe</code>放在一个目录下</p>
+<h3 id="创建winswxml">创建winsw.xml</h3>
+<pre><code>&lt;service&gt;
+    &lt;id&gt;frp&lt;/id&gt;
+    &lt;name&gt;frp&lt;/name&gt;
+    &lt;description&gt;frp remote control&lt;/description&gt;
+    &lt;executable&gt;frpc&lt;/executable&gt;
+    &lt;arguments&gt;-c frpc.ini&lt;/arguments&gt;
+    &lt;logmode&gt;reset&lt;/logmode&gt;
+&lt;/service&gt;
+</code></pre>
+<h3 id="安装服务">安装服务</h3>
+<p>使用管理员分身运行powershell</p>
+<pre><code>winsw install
+</code></pre>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li>
+<li><a href="#linux-%E7%AF%87">Linux 篇</a>
 <ul>
 <li><a href="#%E5%88%9B%E5%BB%BAservice%E6%96%87%E4%BB%B6">创建service文件</a></li>
 <li><a href="#%E9%85%8D%E7%BD%AE%E5%90%AF%E5%8A%A8%E4%BF%A1%E6%81%AF">配置启动信息</a></li>
 <li><a href="#%E5%90%AF%E5%8A%A8">启动</a></li>
+</ul>
+</li>
+<li><a href="#windows-%E7%AF%87">Windows 篇</a>
+<ul>
+<li><a href="#%E5%88%9B%E5%BB%BAwinswxml">创建winsw.xml</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E6%9C%8D%E5%8A%A1">安装服务</a></li>
 </ul>
 </li>
 </ul>
