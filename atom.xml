@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://svcvit.github.io</id>
     <title>小众需求</title>
-    <updated>2019-08-20T08:01:59.042Z</updated>
+    <updated>2019-08-28T02:36:09.169Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://svcvit.github.io"/>
     <link rel="self" href="https://svcvit.github.io/atom.xml"/>
@@ -10,6 +10,31 @@
     <logo>https://svcvit.github.io/images/avatar.png</logo>
     <icon>https://svcvit.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, 小众需求</rights>
+    <entry>
+        <title type="html"><![CDATA[FRPS 的自动启动]]></title>
+        <id>https://svcvit.github.io/post/FPRS</id>
+        <link href="https://svcvit.github.io/post/FPRS">
+        </link>
+        <updated>2019-08-28T02:23:16.000Z</updated>
+        <content type="html"><![CDATA[<p>如果是Linux服务器，譬如我用的centos 7.5，配置系统启动如下：</p>
+<h3 id="创建service文件">创建service文件</h3>
+<pre><code>vi /etc/systemd/system/frps.service
+</code></pre>
+<h3 id="配置启动信息">配置启动信息</h3>
+<pre><code>[Unit]
+Description=frps daemon
+[Service]
+Type=simple
+ExecStart=/home/frps/frps -c /home/frps/frps.ini
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<h3 id="启动">启动</h3>
+<p>启动：<code>systemctl start frps</code><br>
+自动启动：<code>systemctl enable frps</code></p>
+<p>如果是Windows服务器。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[PowerBI 一些笔记]]></title>
         <id>https://svcvit.github.io/post/powerbi</id>

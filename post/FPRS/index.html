@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>联想牌软路由 | 小众需求</title>
+<title>FRPS 的自动启动 | 小众需求</title>
 <meta name="description" content="一些很小众的需求，往往需要自己找答案。" />
 <link rel="shortcut icon" href="https://svcvit.github.io/favicon.ico?v=1566959764277">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -73,46 +73,56 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              联想牌软路由
+              FRPS 的自动启动
             </h2>
             <div class="post-info">
               <span>
-                2019-07-26
+                2019-08-28
               </span>
               <span>
                 1 min read
               </span>
               
-                <a href="https://svcvit.github.io/tag/zTLEuRxm0" class="post-tag">
-                  # 软路由
-                </a>
-              
             </div>
             
-              <img class="post-feature-image" src="https://svcvit.github.io/post-images/lenovo_router.JPG" alt="">
+              <img class="post-feature-image" src="https://svcvit.github.io/post-images/FPRS.png" alt="">
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>以前买的小马的v5的软路由，ES的cpu，风扇真的是吵，而且做工、电源、都是浓浓的山寨气息。无奈也没找到合适的小主机，也就一直用着了。上个月看到坛友的<a href="https://www.chiphell.com/thread-1988370-1-1.html">m720开箱贴</a>。</p>
-<p>于是也在联想美国官网定了一台，加配了4口的网卡。因为担心砍单，所以就直接寄到美国朋友家里，今天刚送到国内，开箱分享一下。</p>
-<p>我购买的是最乞丐的版本，配置如下：<br>
-<img src="https://svcvit.github.io/post-images/1564117679467.png" alt=""></p>
-<p>用了联想的8通道，含税价格这么多。总体来说比淘宝的软路由价格贵一点，但是真心比联想国行便宜。<br>
-<img src="https://svcvit.github.io/post-images/1564117809052.jpg" alt=""></p>
-<p>拍点照片：<br>
-<img src="https://svcvit.github.io/post-images/1564117648781.JPG" alt=""><br>
-<img src="https://svcvit.github.io/post-images/1564117648783.JPG" alt=""><br>
-<img src="https://svcvit.github.io/post-images/1564117648784.JPG" alt=""><br>
-<img src="https://svcvit.github.io/post-images/1564117648785.JPG" alt=""><br>
-<img src="https://svcvit.github.io/post-images/1564117648786.JPG" alt=""><br>
-<img src="https://svcvit.github.io/post-images/1564117648787.JPG" alt=""><br>
-<img src="https://svcvit.github.io/post-images/1564117648788.JPG" alt=""><br>
-<img src="https://svcvit.github.io/post-images/1564117648789.JPG" alt=""><br>
-<img src="https://svcvit.github.io/post-images/1564117648790.JPG" alt=""></p>
+                <p>如果是Linux服务器，譬如我用的centos 7.5，配置系统启动如下：</p>
+<h3 id="创建service文件">创建service文件</h3>
+<pre><code>vi /etc/systemd/system/frps.service
+</code></pre>
+<h3 id="配置启动信息">配置启动信息</h3>
+<pre><code>[Unit]
+Description=frps daemon
+[Service]
+Type=simple
+ExecStart=/home/frps/frps -c /home/frps/frps.ini
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<h3 id="启动">启动</h3>
+<p>启动：<code>systemctl start frps</code><br>
+自动启动：<code>systemctl enable frps</code></p>
+<p>如果是Windows服务器。</p>
 
               </div>
               <div class="toc-container">
-                
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%88%9B%E5%BB%BAservice%E6%96%87%E4%BB%B6">创建service文件</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E5%90%AF%E5%8A%A8%E4%BF%A1%E6%81%AF">配置启动信息</a></li>
+<li><a href="#%E5%90%AF%E5%8A%A8">启动</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
               </div>
             </div>
           </article>
@@ -121,9 +131,9 @@
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://svcvit.github.io/post/CMLINK_UK_4G_SIM">
+            <a href="https://svcvit.github.io/post/powerbi">
               <h3 class="post-title">
-                领一张英国4G电话卡，大陆合法上网
+                PowerBI 一些笔记
               </h3>
             </a>
           </div>
