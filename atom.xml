@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://svcvit.github.io</id>
     <title>小众需求</title>
-    <updated>2019-09-05T03:45:47.969Z</updated>
+    <updated>2019-09-05T03:47:34.335Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://svcvit.github.io"/>
     <link rel="self" href="https://svcvit.github.io/atom.xml"/>
@@ -30,7 +30,8 @@
 <li>安装Koolddns，使用阿里云动态DNS服务解析到你家的路由器</li>
 <li>v2ray 开启 socks5 代理，允许外网访问</li>
 </ul>
-<p>更对信息，可以参考我的<a href="https://www.youtube.com/watch?v=E7rmgv5X1Gs">youtube视频 </a></p>
+<p>更对信息，可以参考我的<a href="https://www.youtube.com/watch?v=E7rmgv5X1Gs">youtube视频 </a><br>
+顺便推荐一个我用的不错的v2ray的机场，这个机场需要能正常翻墙才能访问，所以可靠性一直很高，原因你懂的。 https://my.v2fly.net/aff.php?aff=809</p>
 ]]></content>
     </entry>
     <entry>
