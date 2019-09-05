@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://svcvit.github.io</id>
     <title>小众需求</title>
-    <updated>2019-08-28T02:40:38.010Z</updated>
+    <updated>2019-09-05T02:01:17.587Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://svcvit.github.io"/>
     <link rel="self" href="https://svcvit.github.io/atom.xml"/>
@@ -10,6 +10,28 @@
     <logo>https://svcvit.github.io/images/avatar.png</logo>
     <icon>https://svcvit.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, 小众需求</rights>
+    <entry>
+        <title type="html"><![CDATA[如何让你的小白朋友和你一样科学上网]]></title>
+        <id>https://svcvit.github.io/post/LEDE</id>
+        <link href="https://svcvit.github.io/post/LEDE">
+        </link>
+        <updated>2019-09-05T01:37:51.000Z</updated>
+        <content type="html"><![CDATA[<p>因为工作的关系，有很多需要正当科学上网的需求，周围有些朋友也会有这样的需求。以前，我一般是推荐他们购买一些节点服务，买一个支持小火箭的App，就可以正常使用了，但是，他们会经常遇到一些问题，包括节点失效，订阅链接失效等等。这样不得不再次求助你，所以，最近我使用了一个更一劳永逸的方法，解决这个问题。</p>
+<h3 id="思路">思路</h3>
+<p><img src="https://svcvit.github.io/post-images/1567648458489.jpg" alt=""></p>
+<h3 id="优点">优点</h3>
+<ul>
+<li>成本低，只要一个域名就可以了</li>
+<li>相对安全，因为家用宽带，IP每次重启会变更</li>
+<li>容易维护，只要你保持家里的LEDE能上网，你的朋友就都能上网</li>
+</ul>
+<h3 id="方法">方法</h3>
+<ul>
+<li>安装Koolddns，使用阿里云动态DNS服务解析到你家的路由器</li>
+<li>v2ray 开启 socks5 代理，允许外网访问</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[FRPS 的自动启动]]></title>
         <id>https://svcvit.github.io/post/frps</id>
