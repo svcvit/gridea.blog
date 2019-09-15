@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://svcvit.github.io</id>
     <title>小众需求</title>
-    <updated>2019-09-06T01:31:21.751Z</updated>
+    <updated>2019-09-15T11:53:43.538Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://svcvit.github.io"/>
     <link rel="self" href="https://svcvit.github.io/atom.xml"/>
@@ -237,6 +237,9 @@ WantedBy=multi-user.target
         <content type="html"><![CDATA[<p>一些常用的操作，备注一下方便查找。</p>
 <h3 id="读取表格数">读取表格数</h3>
 <pre><code class="language-python">pd.read_excel(&quot;data.xlsx&quot;,&quot;sheet1&quot;)
+
+#读取所有sheet
+pd.read_excel(&quot;data.xlsx&quot;,sheet_name=None)
 </code></pre>
 <h3 id="读取数据参数">读取数据参数</h3>
 <pre><code class="language-python">col_names = [a,b,c,d]
@@ -273,6 +276,9 @@ df.loc[:,&quot;col_name&quot;]
 </code></pre>
 <h3 id="上下合并">上下合并</h3>
 <pre><code class="language-python">pd.concat([df1,df2],sort=False)
+</code></pre>
+<h3 id="左右合并-2">左右合并</h3>
+<pre><code class="language-python">pd.concat([df1,df2],axis=1, sort=False)
 </code></pre>
 <h3 id="读取数据库">读取数据库</h3>
 <pre><code class="language-python">engine = sqlalchemy.create_engine(&quot;postgresql://username:pwd@0.0.0.0/database&quot;)
@@ -314,6 +320,9 @@ df['col'].str.contains(&quot;&quot;)
 <h3 id="筛选数据">筛选数据</h3>
 <pre><code class="language-python">#注意：需要小括号和&amp;符号
 df[(df['0']&gt;0.3) &amp; (df['1']&gt;0.7)]
+</code></pre>
+<h3 id="处理筛选后的数据">处理筛选后的数据</h3>
+<pre><code class="language-python">data[drug].loc[(data[drug][&quot;剂量&quot;]==&quot;片&quot;),&quot;医生&quot;] = get_doctor(data[drug][data[drug][&quot;剂量&quot;]==&quot;片&quot;])
 </code></pre>
 ]]></content>
     </entry>

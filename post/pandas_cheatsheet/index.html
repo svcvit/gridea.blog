@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Pandas的一些使用备忘 | 小众需求</title>
 <meta name="description" content="一些很小众的需求，往往需要自己找答案。" />
-<link rel="shortcut icon" href="https://svcvit.github.io/favicon.ico?v=1567733478915">
+<link rel="shortcut icon" href="https://svcvit.github.io/favicon.ico?v=1568546895581">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://svcvit.github.io/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://svcvit.github.io">
-  <img class="avatar" src="https://svcvit.github.io/images/avatar.png?v=1567733478915" alt="">
+  <img class="avatar" src="https://svcvit.github.io/images/avatar.png?v=1568546895581" alt="">
   </a>
   <h1 class="site-title">
     小众需求
@@ -96,6 +96,9 @@
                 <p>一些常用的操作，备注一下方便查找。</p>
 <h3 id="读取表格数">读取表格数</h3>
 <pre><code class="language-python">pd.read_excel(&quot;data.xlsx&quot;,&quot;sheet1&quot;)
+
+#读取所有sheet
+pd.read_excel(&quot;data.xlsx&quot;,sheet_name=None)
 </code></pre>
 <h3 id="读取数据参数">读取数据参数</h3>
 <pre><code class="language-python">col_names = [a,b,c,d]
@@ -132,6 +135,9 @@ df.loc[:,&quot;col_name&quot;]
 </code></pre>
 <h3 id="上下合并">上下合并</h3>
 <pre><code class="language-python">pd.concat([df1,df2],sort=False)
+</code></pre>
+<h3 id="左右合并-2">左右合并</h3>
+<pre><code class="language-python">pd.concat([df1,df2],axis=1, sort=False)
 </code></pre>
 <h3 id="读取数据库">读取数据库</h3>
 <pre><code class="language-python">engine = sqlalchemy.create_engine(&quot;postgresql://username:pwd@0.0.0.0/database&quot;)
@@ -174,6 +180,9 @@ df['col'].str.contains(&quot;&quot;)
 <pre><code class="language-python">#注意：需要小括号和&amp;符号
 df[(df['0']&gt;0.3) &amp; (df['1']&gt;0.7)]
 </code></pre>
+<h3 id="处理筛选后的数据">处理筛选后的数据</h3>
+<pre><code class="language-python">data[drug].loc[(data[drug][&quot;剂量&quot;]==&quot;片&quot;),&quot;医生&quot;] = get_doctor(data[drug][data[drug][&quot;剂量&quot;]==&quot;片&quot;])
+</code></pre>
 
               </div>
               <div class="toc-container">
@@ -193,6 +202,7 @@ df[(df['0']&gt;0.3) &amp; (df['1']&gt;0.7)]
 <li><a href="#%E4%BF%AE%E6%94%B9%E5%88%97%E5%90%8D">修改列名</a></li>
 <li><a href="#%E5%86%99%E5%85%A5%E8%A1%A8%E6%A0%BC">写入表格</a></li>
 <li><a href="#%E4%B8%8A%E4%B8%8B%E5%90%88%E5%B9%B6">上下合并</a></li>
+<li><a href="#%E5%B7%A6%E5%8F%B3%E5%90%88%E5%B9%B6-2">左右合并</a></li>
 <li><a href="#%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93">读取数据库</a></li>
 <li><a href="#%E9%87%8D%E7%BD%AE%E7%B4%A2%E5%BC%95">重置索引</a></li>
 <li><a href="#%E5%9F%BA%E7%A1%80%E7%BB%9F%E8%AE%A1">基础统计</a></li>
@@ -201,6 +211,7 @@ df[(df['0']&gt;0.3) &amp; (df['1']&gt;0.7)]
 <li><a href="#%E5%88%A0%E9%99%A4%E8%A1%8C">删除行</a></li>
 <li><a href="#%E6%8E%92%E5%BA%8F">排序</a></li>
 <li><a href="#%E7%AD%9B%E9%80%89%E6%95%B0%E6%8D%AE">筛选数据</a></li>
+<li><a href="#%E5%A4%84%E7%90%86%E7%AD%9B%E9%80%89%E5%90%8E%E7%9A%84%E6%95%B0%E6%8D%AE">处理筛选后的数据</a></li>
 </ul>
 </li>
 </ul>
