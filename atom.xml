@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://svcvit.github.io</id>
     <title>小众需求</title>
-    <updated>2019-09-15T13:15:08.560Z</updated>
+    <updated>2019-09-21T16:33:14.277Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://svcvit.github.io"/>
     <link rel="self" href="https://svcvit.github.io/atom.xml"/>
@@ -10,6 +10,112 @@
     <logo>https://svcvit.github.io/images/avatar.png</logo>
     <icon>https://svcvit.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, 小众需求</rights>
+    <entry>
+        <title type="html"><![CDATA[Scrapy 使用教程]]></title>
+        <id>https://svcvit.github.io/post/scrapy</id>
+        <link href="https://svcvit.github.io/post/scrapy">
+        </link>
+        <updated>2019-09-20T04:30:51.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="创建项目">创建项目</h3>
+<p>scrapy startproject project_name</p>
+<h3 id="创建爬虫">创建爬虫</h3>
+<p>scrapy genspider web hostname</p>
+<h3 id="编辑itemspy">编辑items.py</h3>
+<p>这里定义需要保存的数据</p>
+<pre><code class="language-python">class InfoItem(scrapy.Item):
+    title = scrapy.Field
+    link = scrapy.Field
+    desc  = scrapy.Field
+</code></pre>
+<h3 id="编辑-webpy">编辑 web.py</h3>
+<pre><code class="language-python">from tutorial.items import InfoItem
+
+class WebSpider(scrapy.Spider):
+    name = &quot;web&quot;
+    allowed_domains = [&quot;hostname&quot;]
+    start_urls = [
+        &quot;http://www.chinadrugtrials.org.cn/eap/clinicaltrials.searchlist&quot;
+    ]
+
+    def parse(self, response):
+        item = InfoItem()
+        item['title'] = response.xpath('//*[@id=&quot;searchfrm&quot;]/div/div[3]/div[1]/a[1]/text()').extract()[0]
+        yield item
+</code></pre>
+<h3 id="或者再写一个爬虫">或者再写一个爬虫</h3>
+<pre><code class="language-python">
+class DetailSpider(scrapy.Spider):
+    name = 'detail'
+    allowed_domains = ['www.chinadrugtrials.org.cn']
+    
+    def start_requests(self):
+        url = 'http://www.chinadrugtrials.org.cn/eap/clinicaltrials.searchlistdetail'
+        for i in range(0,9058):
+            params = {'currentpage':'',
+                    'keywords':&quot;&quot;,
+                    'pagesize':'20',
+                    'sort':'desc',
+                    'sort2':'desc',
+                    'rule':'CTR',
+                    'reg_no':'CTR'}
+            params['ckm_index'] = str(i+1)
+            yield scrapy.FormRequest(url,method=&quot;POST&quot;,formdata =params,callback=self.parse)
+
+    def parse(self, response):
+        # 保存文件
+        filename = response.xpath('/html/body/div[1]/table/tbody/tr[2]/td/div[2]/div/div[2]/div[1]/div[3]/table/tr[1]/td[2]/text()').extract()[0]
+        print(filename)
+        with open(&quot;html/&quot;+filename+&quot;.html&quot;, 'wb') as f:
+            f.write(response.body)
+</code></pre>
+<h3 id="存储数据到-pgsql">存储数据到 pgsql</h3>
+<p>编辑pipelines.py文件</p>
+<pre><code class="language-python">from twisted.enterprise import adbapi 
+import psycopg2
+
+class detail2Pipeline(object):
+    @classmethod
+    def from_settings(cls,settings):#名称固定 会被scrapy调用 直接可用setting的值
+        db = settings['MYSQL_DB_NAME']
+        host = settings['MYSQL_HOST']
+        port = settings['MYSQL_PORT']
+        user = settings['MYSQL_USER']
+        passwd = settings['MYSQL_PASSWORD']
+        #创建连接池对象，用pymysql访问数据库
+        dbpool = adbapi.ConnectionPool(&quot;psycopg2&quot;,host = host,port = port, database= db,user=user,password=passwd)
+        return cls(dbpool)
+
+    def __init__(self,dbpool):
+        self.dbpool=dbpool
+
+    def process_item(self, item, spider):
+        #去调用insert_db函数
+        self.dbpool.runInteraction(self.insert_db,item)
+        return item
+
+    def insert_db(self, tx, item):
+        values = (
+        item[&quot;Registrationd_number&quot;] ,
+        item[&quot;Testd_condition&quot;] ,
+        item[&quot;Bidderd_Contact&quot;] ,
+        item[&quot;Dated_ofd_firstd_publicd_announcement&quot;] ,
+        item[&quot;Named_ofd_applicant&quot;]
+        )
+        try:
+            sql = 'INSERT INTO &quot;DetailTrial&quot; (&quot;Registrationd_number&quot;,&quot;Testd_condition&quot;,&quot;Bidderd_Contact&quot;,&quot;Dated_ofd_firstd_publicd_announcement&quot;,&quot;Named_ofd_applicant&quot;) VALUES (%s,%s,%s,%s,%s)'
+            tx.execute(sql, values)
+            print(&quot;数据插入成功&quot;)
+        except Exception as e:
+            print('数据插入错误:', e)
+
+    def close_spider(self,spider):
+        self.dbpool.close()
+</code></pre>
+<h3 id="执行爬虫">执行爬虫</h3>
+<p>将数据输出到json文件<br>
+scrapy crawl web -o items.json</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[如何让你的小白朋友和你一样科学上网]]></title>
         <id>https://svcvit.github.io/post/LEDE</id>

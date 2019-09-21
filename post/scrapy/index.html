@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>FRPS 的自动启动 | 小众需求</title>
+<title>Scrapy 使用教程 | 小众需求</title>
 <meta name="description" content="一些很小众的需求，往往需要自己找答案。" />
 <link rel="shortcut icon" href="https://svcvit.github.io/favicon.ico?v=1569083588182">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -73,72 +73,135 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              FRPS 的自动启动
+              Scrapy 使用教程
             </h2>
             <div class="post-info">
               <span>
-                2019-08-28
+                2019-09-20
               </span>
               <span>
-                1 min read
+                2 min read
               </span>
               
             </div>
             
-              <img class="post-feature-image" src="https://svcvit.github.io/post-images/frps.png" alt="">
+              <img class="post-feature-image" src="https://svcvit.github.io/post-images/scrapy.png" alt="">
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h2 id="linux-篇">Linux 篇</h2>
-<p>如果是Linux服务器，譬如我用的centos 7.5，配置系统启动如下：</p>
-<h3 id="创建service文件">创建service文件</h3>
-<pre><code>vi /etc/systemd/system/frps.service
+                <h3 id="创建项目">创建项目</h3>
+<p>scrapy startproject project_name</p>
+<h3 id="创建爬虫">创建爬虫</h3>
+<p>scrapy genspider web hostname</p>
+<h3 id="编辑itemspy">编辑items.py</h3>
+<p>这里定义需要保存的数据</p>
+<pre><code class="language-python">class InfoItem(scrapy.Item):
+    title = scrapy.Field
+    link = scrapy.Field
+    desc  = scrapy.Field
 </code></pre>
-<h3 id="配置启动信息">配置启动信息</h3>
-<pre><code>[Unit]
-Description=frps daemon
-[Service]
-Type=simple
-ExecStart=/home/frps/frps -c /home/frps/frps.ini
-[Install]
-WantedBy=multi-user.target
+<h3 id="编辑-webpy">编辑 web.py</h3>
+<pre><code class="language-python">from tutorial.items import InfoItem
+
+class WebSpider(scrapy.Spider):
+    name = &quot;web&quot;
+    allowed_domains = [&quot;hostname&quot;]
+    start_urls = [
+        &quot;http://www.chinadrugtrials.org.cn/eap/clinicaltrials.searchlist&quot;
+    ]
+
+    def parse(self, response):
+        item = InfoItem()
+        item['title'] = response.xpath('//*[@id=&quot;searchfrm&quot;]/div/div[3]/div[1]/a[1]/text()').extract()[0]
+        yield item
 </code></pre>
-<h3 id="启动">启动</h3>
-<p>启动：<code>systemctl start frps</code><br>
-自动启动：<code>systemctl enable frps</code></p>
-<h2 id="windows-篇">Windows 篇</h2>
-<p>如果是Windows服务器。可以使用<a href="https://github.com/kohsuke/winsw">winsw</a>。将<code>winsw.exe</code>文件和<code>frpc.exe</code>放在一个目录下</p>
-<h3 id="创建winswxml">创建winsw.xml</h3>
-<pre><code>&lt;service&gt;
-    &lt;id&gt;frp&lt;/id&gt;
-    &lt;name&gt;frp&lt;/name&gt;
-    &lt;description&gt;frp remote control&lt;/description&gt;
-    &lt;executable&gt;frpc&lt;/executable&gt;
-    &lt;arguments&gt;-c frpc.ini&lt;/arguments&gt;
-    &lt;logmode&gt;reset&lt;/logmode&gt;
-&lt;/service&gt;
+<h3 id="或者再写一个爬虫">或者再写一个爬虫</h3>
+<pre><code class="language-python">
+class DetailSpider(scrapy.Spider):
+    name = 'detail'
+    allowed_domains = ['www.chinadrugtrials.org.cn']
+    
+    def start_requests(self):
+        url = 'http://www.chinadrugtrials.org.cn/eap/clinicaltrials.searchlistdetail'
+        for i in range(0,9058):
+            params = {'currentpage':'',
+                    'keywords':&quot;&quot;,
+                    'pagesize':'20',
+                    'sort':'desc',
+                    'sort2':'desc',
+                    'rule':'CTR',
+                    'reg_no':'CTR'}
+            params['ckm_index'] = str(i+1)
+            yield scrapy.FormRequest(url,method=&quot;POST&quot;,formdata =params,callback=self.parse)
+
+    def parse(self, response):
+        # 保存文件
+        filename = response.xpath('/html/body/div[1]/table/tbody/tr[2]/td/div[2]/div/div[2]/div[1]/div[3]/table/tr[1]/td[2]/text()').extract()[0]
+        print(filename)
+        with open(&quot;html/&quot;+filename+&quot;.html&quot;, 'wb') as f:
+            f.write(response.body)
 </code></pre>
-<h3 id="安装服务">安装服务</h3>
-<p>使用管理员分身运行powershell</p>
-<pre><code>winsw install
+<h3 id="存储数据到-pgsql">存储数据到 pgsql</h3>
+<p>编辑pipelines.py文件</p>
+<pre><code class="language-python">from twisted.enterprise import adbapi 
+import psycopg2
+
+class detail2Pipeline(object):
+    @classmethod
+    def from_settings(cls,settings):#名称固定 会被scrapy调用 直接可用setting的值
+        db = settings['MYSQL_DB_NAME']
+        host = settings['MYSQL_HOST']
+        port = settings['MYSQL_PORT']
+        user = settings['MYSQL_USER']
+        passwd = settings['MYSQL_PASSWORD']
+        #创建连接池对象，用pymysql访问数据库
+        dbpool = adbapi.ConnectionPool(&quot;psycopg2&quot;,host = host,port = port, database= db,user=user,password=passwd)
+        return cls(dbpool)
+
+    def __init__(self,dbpool):
+        self.dbpool=dbpool
+
+    def process_item(self, item, spider):
+        #去调用insert_db函数
+        self.dbpool.runInteraction(self.insert_db,item)
+        return item
+
+    def insert_db(self, tx, item):
+        values = (
+        item[&quot;Registrationd_number&quot;] ,
+        item[&quot;Testd_condition&quot;] ,
+        item[&quot;Bidderd_Contact&quot;] ,
+        item[&quot;Dated_ofd_firstd_publicd_announcement&quot;] ,
+        item[&quot;Named_ofd_applicant&quot;]
+        )
+        try:
+            sql = 'INSERT INTO &quot;DetailTrial&quot; (&quot;Registrationd_number&quot;,&quot;Testd_condition&quot;,&quot;Bidderd_Contact&quot;,&quot;Dated_ofd_firstd_publicd_announcement&quot;,&quot;Named_ofd_applicant&quot;) VALUES (%s,%s,%s,%s,%s)'
+            tx.execute(sql, values)
+            print(&quot;数据插入成功&quot;)
+        except Exception as e:
+            print('数据插入错误:', e)
+
+    def close_spider(self,spider):
+        self.dbpool.close()
 </code></pre>
+<h3 id="执行爬虫">执行爬虫</h3>
+<p>将数据输出到json文件<br>
+scrapy crawl web -o items.json</p>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#linux-%E7%AF%87">Linux 篇</a>
+<li>
 <ul>
-<li><a href="#%E5%88%9B%E5%BB%BAservice%E6%96%87%E4%BB%B6">创建service文件</a></li>
-<li><a href="#%E9%85%8D%E7%BD%AE%E5%90%AF%E5%8A%A8%E4%BF%A1%E6%81%AF">配置启动信息</a></li>
-<li><a href="#%E5%90%AF%E5%8A%A8">启动</a></li>
-</ul>
-</li>
-<li><a href="#windows-%E7%AF%87">Windows 篇</a>
-<ul>
-<li><a href="#%E5%88%9B%E5%BB%BAwinswxml">创建winsw.xml</a></li>
-<li><a href="#%E5%AE%89%E8%A3%85%E6%9C%8D%E5%8A%A1">安装服务</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE">创建项目</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BA%E7%88%AC%E8%99%AB">创建爬虫</a></li>
+<li><a href="#%E7%BC%96%E8%BE%91itemspy">编辑items.py</a></li>
+<li><a href="#%E7%BC%96%E8%BE%91-webpy">编辑 web.py</a></li>
+<li><a href="#%E6%88%96%E8%80%85%E5%86%8D%E5%86%99%E4%B8%80%E4%B8%AA%E7%88%AC%E8%99%AB">或者再写一个爬虫</a></li>
+<li><a href="#%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE%E5%88%B0-pgsql">存储数据到 pgsql</a></li>
+<li><a href="#%E6%89%A7%E8%A1%8C%E7%88%AC%E8%99%AB">执行爬虫</a></li>
 </ul>
 </li>
 </ul>
@@ -153,9 +216,9 @@ WantedBy=multi-user.target
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://svcvit.github.io/post/powerbi">
+            <a href="https://svcvit.github.io/post/LEDE">
               <h3 class="post-title">
-                PowerBI 一些笔记
+                如何让你的小白朋友和你一样科学上网
               </h3>
             </a>
           </div>
