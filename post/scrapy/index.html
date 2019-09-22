@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Scrapy 使用教程 | 小众需求</title>
 <meta name="description" content="一些很小众的需求，往往需要自己找答案。" />
-<link rel="shortcut icon" href="https://svcvit.github.io/favicon.ico?v=1569083588182">
+<link rel="shortcut icon" href="https://svcvit.github.io/favicon.ico?v=1569195937927">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://svcvit.github.io/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://svcvit.github.io">
-  <img class="avatar" src="https://svcvit.github.io/images/avatar.png?v=1569083588182" alt="">
+  <img class="avatar" src="https://svcvit.github.io/images/avatar.png?v=1569195937927" alt="">
   </a>
   <h1 class="site-title">
     小众需求
@@ -80,7 +80,7 @@
                 2019-09-20
               </span>
               <span>
-                2 min read
+                3 min read
               </span>
               
             </div>
@@ -90,11 +90,11 @@
             <div class="post-content-wrapper">
               <div class="post-content">
                 <h3 id="创建项目">创建项目</h3>
-<p>scrapy startproject project_name</p>
+<p><code>scrapy startproject project_name</code></p>
 <h3 id="创建爬虫">创建爬虫</h3>
-<p>scrapy genspider web hostname</p>
-<h3 id="编辑itemspy">编辑items.py</h3>
-<p>这里定义需要保存的数据</p>
+<p><code>scrapy genspider web hostname</code></p>
+<h3 id="定义数据">定义数据</h3>
+<p>这里定义需要保存的数据，编辑<code>items.py</code></p>
 <pre><code class="language-python">class InfoItem(scrapy.Item):
     title = scrapy.Field
     link = scrapy.Field
@@ -186,7 +186,7 @@ class detail2Pipeline(object):
 </code></pre>
 <h3 id="执行爬虫">执行爬虫</h3>
 <p>将数据输出到json文件<br>
-scrapy crawl web -o items.json</p>
+<code>scrapy crawl web -o items.json</code></p>
 
               </div>
               <div class="toc-container">
@@ -197,7 +197,7 @@ scrapy crawl web -o items.json</p>
 <ul>
 <li><a href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE">创建项目</a></li>
 <li><a href="#%E5%88%9B%E5%BB%BA%E7%88%AC%E8%99%AB">创建爬虫</a></li>
-<li><a href="#%E7%BC%96%E8%BE%91itemspy">编辑items.py</a></li>
+<li><a href="#%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE">定义数据</a></li>
 <li><a href="#%E7%BC%96%E8%BE%91-webpy">编辑 web.py</a></li>
 <li><a href="#%E6%88%96%E8%80%85%E5%86%8D%E5%86%99%E4%B8%80%E4%B8%AA%E7%88%AC%E8%99%AB">或者再写一个爬虫</a></li>
 <li><a href="#%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE%E5%88%B0-pgsql">存储数据到 pgsql</a></li>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://svcvit.github.io</id>
     <title>小众需求</title>
-    <updated>2019-09-21T16:33:14.277Z</updated>
+    <updated>2019-09-22T23:45:39.839Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://svcvit.github.io"/>
     <link rel="self" href="https://svcvit.github.io/atom.xml"/>
@@ -17,11 +17,11 @@
         </link>
         <updated>2019-09-20T04:30:51.000Z</updated>
         <content type="html"><![CDATA[<h3 id="创建项目">创建项目</h3>
-<p>scrapy startproject project_name</p>
+<p><code>scrapy startproject project_name</code></p>
 <h3 id="创建爬虫">创建爬虫</h3>
-<p>scrapy genspider web hostname</p>
-<h3 id="编辑itemspy">编辑items.py</h3>
-<p>这里定义需要保存的数据</p>
+<p><code>scrapy genspider web hostname</code></p>
+<h3 id="定义数据">定义数据</h3>
+<p>这里定义需要保存的数据，编辑<code>items.py</code></p>
 <pre><code class="language-python">class InfoItem(scrapy.Item):
     title = scrapy.Field
     link = scrapy.Field
@@ -113,7 +113,7 @@ class detail2Pipeline(object):
 </code></pre>
 <h3 id="执行爬虫">执行爬虫</h3>
 <p>将数据输出到json文件<br>
-scrapy crawl web -o items.json</p>
+<code>scrapy crawl web -o items.json</code></p>
 ]]></content>
     </entry>
     <entry>
@@ -124,7 +124,7 @@ scrapy crawl web -o items.json</p>
         <updated>2019-09-05T01:37:51.000Z</updated>
         <content type="html"><![CDATA[<p>因为工作的关系，有很多需要正当科学上网的需求，周围有些朋友也会有这样的需求。以前，我一般是推荐他们购买一些节点服务，买一个支持小火箭的App，就可以正常使用了，但是，他们会经常遇到一些问题，包括节点失效，订阅链接失效等等。这样不得不再次求助你，所以，最近我使用了一个更一劳永逸的方法，解决这个问题。</p>
 <h3 id="思路">思路</h3>
-<p><img src="https://svcvit.github.io/post-images/1567648458489.jpg" alt=""></p>
+<figure data-type="image" tabindex="1"><img src="https://svcvit.github.io/post-images/1567648458489.jpg" alt=""></figure>
 <h3 id="优点">优点</h3>
 <ul>
 <li>成本低，只要一个域名就可以了</li>
@@ -224,7 +224,7 @@ WantedBy=multi-user.target
 <p><code>is_当月 = if(and(INT('ALL'[日期_年])=YEAR(today()),int('ALL'[日期_月])=MONTH(TODAY())),&quot;YES&quot;,&quot;NO&quot;)</code></p>
 <h3 id="用户权限">用户权限</h3>
 <p>用户权限应该使用「管理角色」方式进行处理，如果直接在DAX里控制权限，当整个数据统计过多之后，工作量将倍增。而且DAX无法应用与筛选器，这样就导致低层级用户可以看到高层级用户的筛选项。所以在创建数据结构关系的时候，可以将不同身份变成不同的关联表，方便日后筛选数据</p>
-<p><img src="https://svcvit.github.io/post-images/1566286552331.jpg" alt=""></p>
+<figure data-type="image" tabindex="1"><img src="https://svcvit.github.io/post-images/1566286552331.jpg" alt=""></figure>
 <p>1、声明一个user_name = &quot;test@abc.com&quot; 用于测试角色<br>
 2、发布之后，将user_name = USERNAME()</p>
 <h3 id="添加日期表">添加日期表</h3>
@@ -465,12 +465,12 @@ df[(df['0']&gt;0.3) &amp; (df['1']&gt;0.7)]
         <content type="html"><![CDATA[<p>众所周知，在大陆境内非法使用vpn、ssr等方式浏览境外网站，被定义为非法，所以各种翻墙方式都不一定稳定，特别是国家开大会，基本所有线路都是挂的。</p>
 <p>前天看网上推荐，中国移动在英国提供的CMLINK电话卡，号码是英国本地号码，支持英国、欧盟、中国大陆、香港地区共享流量套餐使用，实测在大陆也可以正常访问国外Youtube等网站，应该是目前最合法的翻墙方式了。而且手机共享出来的热点，也能正常翻墙。</p>
 <p>我去CMLINK的官网申请了一张，快递从广东发出，大概两天左右收到。</p>
-<p><img src="https://svcvit.github.io/post-images/1564115668300.jpg" alt=""></p>
+<figure data-type="image" tabindex="1"><img src="https://svcvit.github.io/post-images/1564115668300.jpg" alt=""></figure>
 <p>卡片这个样子：</p>
-<p><img src="https://svcvit.github.io/post-images/1564115824141.JPG" alt=""></p>
-<p><img src="https://svcvit.github.io/post-images/1564115830020.JPG" alt=""></p>
+<figure data-type="image" tabindex="2"><img src="https://svcvit.github.io/post-images/1564115824141.JPG" alt=""></figure>
+<figure data-type="image" tabindex="3"><img src="https://svcvit.github.io/post-images/1564115830020.JPG" alt=""></figure>
 <p>充值会自动激活，如果不充值，打卡片包装后面印刷的服务热线，申请开通会员服务，也可以激活，热线有中文服务。激活即送500m的流量，免费使用。目前有几个套餐可以选择：</p>
-<p><img src="https://svcvit.github.io/post-images/1564115886293.jpg" alt=""></p>
+<figure data-type="image" tabindex="4"><img src="https://svcvit.github.io/post-images/1564115886293.jpg" alt=""></figure>
 <p>我选了一个最便宜的5.99英镑的套餐，用一段时间，看看稳定性如何。</p>
 ]]></content>
     </entry>

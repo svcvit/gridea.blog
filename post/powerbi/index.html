@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>PowerBI 一些笔记 | 小众需求</title>
 <meta name="description" content="一些很小众的需求，往往需要自己找答案。" />
-<link rel="shortcut icon" href="https://svcvit.github.io/favicon.ico?v=1569083588182">
+<link rel="shortcut icon" href="https://svcvit.github.io/favicon.ico?v=1569195937927">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://svcvit.github.io/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://svcvit.github.io">
-  <img class="avatar" src="https://svcvit.github.io/images/avatar.png?v=1569083588182" alt="">
+  <img class="avatar" src="https://svcvit.github.io/images/avatar.png?v=1569195937927" alt="">
   </a>
   <h1 class="site-title">
     小众需求
@@ -80,7 +80,7 @@
                 2019-08-18
               </span>
               <span>
-                5 min read
+                10 min read
               </span>
               
                 <a href="https://svcvit.github.io/tag/txPuyBN_MD" class="post-tag">
@@ -130,7 +130,7 @@
 <p><code>is_当月 = if(and(INT('ALL'[日期_年])=YEAR(today()),int('ALL'[日期_月])=MONTH(TODAY())),&quot;YES&quot;,&quot;NO&quot;)</code></p>
 <h3 id="用户权限">用户权限</h3>
 <p>用户权限应该使用「管理角色」方式进行处理，如果直接在DAX里控制权限，当整个数据统计过多之后，工作量将倍增。而且DAX无法应用与筛选器，这样就导致低层级用户可以看到高层级用户的筛选项。所以在创建数据结构关系的时候，可以将不同身份变成不同的关联表，方便日后筛选数据</p>
-<p><img src="https://svcvit.github.io/post-images/1566286552331.jpg" alt=""></p>
+<figure data-type="image" tabindex="1"><img src="https://svcvit.github.io/post-images/1566286552331.jpg" alt=""></figure>
 <p>1、声明一个user_name = &quot;test@abc.com&quot; 用于测试角色<br>
 2、发布之后，将user_name = USERNAME()</p>
 <h3 id="添加日期表">添加日期表</h3>
