@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://svcvit.github.io</id>
     <title>小众需求</title>
-    <updated>2019-10-14T06:59:52.641Z</updated>
+    <updated>2019-10-14T07:08:25.427Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://svcvit.github.io"/>
     <link rel="self" href="https://svcvit.github.io/atom.xml"/>
@@ -12,8 +12,8 @@
     <rights>All rights reserved 2019, 小众需求</rights>
     <entry>
         <title type="html"><![CDATA[编译一个 OpenWrt 的Buffalo WZR-HP-AG300H]]></title>
-        <id>https://svcvit.github.io/post/bian-yi-yi-ge-openwrt-de-buffalo-wzr-hp-ag300h</id>
-        <link href="https://svcvit.github.io/post/bian-yi-yi-ge-openwrt-de-buffalo-wzr-hp-ag300h">
+        <id>https://svcvit.github.io/post/openwrt-buffalo-wzr-hp-ag300h</id>
+        <link href="https://svcvit.github.io/post/openwrt-buffalo-wzr-hp-ag300h">
         </link>
         <updated>2019-10-14T06:19:20.000Z</updated>
         <content type="html"><![CDATA[<p>翻出一个老旧路由器，Buffalo WZR-HP-AG300H，准备更新下固件，发现还有 OpenWrt 版本，但是官方的固件缺少 v2ray 等国内必备工具的支持，于是自己下载 <a href="https://github.com/coolsnowwolf/lede">Lean</a> 的源码编译一个，主要添加了 SSR 和 v2ray 几个代理工具。</p>
