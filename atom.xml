@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://svcvit.github.io</id>
     <title>小众需求</title>
-    <updated>2019-10-14T07:09:32.925Z</updated>
+    <updated>2019-10-27T01:51:21.798Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://svcvit.github.io"/>
     <link rel="self" href="https://svcvit.github.io/atom.xml"/>
@@ -10,6 +10,25 @@
     <logo>https://svcvit.github.io/images/avatar.png</logo>
     <icon>https://svcvit.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, 小众需求</rights>
+    <entry>
+        <title type="html"><![CDATA[制作动态排行榜视频的资料]]></title>
+        <id>https://svcvit.github.io/post/zhi-zuo-dong-tai-pai-xing-bang-shi-pin-de-zi-liao</id>
+        <link href="https://svcvit.github.io/post/zhi-zuo-dong-tai-pai-xing-bang-shi-pin-de-zi-liao">
+        </link>
+        <updated>2019-10-27T01:44:28.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="准备的资料">准备的资料</h2>
+<h3 id="动效展示工具">动效展示工具</h3>
+<p>Github的地址 <a href="https://github.com/Jannchie/Historical-ranking-data-visualization-based-on-d3.js">Historical-ranking-data-visualization-based-on-d3.js</a></p>
+<h3 id="背景音乐">背景音乐</h3>
+<p><a href="http://www.aigei.com">爱给素材</a></p>
+<h3 id="屏录录制">屏录录制</h3>
+<p>Mac直接使用 quicktime 或者 screenflow 即可</p>
+<h3 id="剪辑软件">剪辑软件</h3>
+<p>因为视频的内容并不复杂，所以使用 screenflow 即可，或者final cut pro。</p>
+<h3 id="成品输出">成品输出</h3>
+<p>Youtuebe 地址： <a href="https://www.youtube.com/watch?v=X1sBKT88zuE">https://www.youtube.com/watch?v=X1sBKT88zuE</a></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[编译一个 OpenWrt 的Buffalo WZR-HP-AG300H]]></title>
         <id>https://svcvit.github.io/post/openwrt-buffalo-wzr-hp-ag300h</id>
